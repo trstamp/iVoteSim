@@ -1,7 +1,8 @@
 class Question {
 
     private int questionNum;
-    private String qType;
+    private int a = 0, b = 0, c = 0, d = 0;
+    private String qType; //decides which constructor to use
     private String question;
     private String answer; // answer (letter)
     private String o1; // char variables are the letters (a,b,c,d)
@@ -42,16 +43,54 @@ class Question {
         qType = "MultipleChoice";
     }
 
-    String getQuestion() {
+    //setters will increment each number
+    public void setA() {
+        a++;
+    }
+
+    public void setB() {
+        b++;
+    }
+
+    public void setC() {
+        c++;
+    }
+
+    public void setD() {
+        d++;
+    }
+
+    //getters will return each value
+    public int getQuestionNum() {
+        return questionNum;
+    }
+
+    public String getQuestion() {
         return question;
     }
 
-    String getAnswer() {
+    public String getAnswer() {
         return answer;
     }
 
-    String getqType() {
+    public String getqType() {
         return qType;
+    }
+
+    public int getA() {
+        return a;
+    }
+
+    public int getB() {
+        return b;
+    }
+
+    public int getC() {
+        return c;
+    }
+
+    public int getD() {
+        return d;
     }
 
 }
