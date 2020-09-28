@@ -10,5 +10,6 @@ public class SimulationDriver {
         sim.addStudents(); // add students
         sim.answerQuestions(); // students answer each question
         sim.printStatistics(); // print results of each question
+        sim.printScores(); // print each student's score
     }
 }
