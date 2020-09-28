@@ -1,13 +1,13 @@
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
 public class VotingService {
 
-    LinkedList<Student> students = new LinkedList<Student>(); // list of all students participating (Student objects)
-    LinkedList<Question> questions; // list of all questions (Question objects)
+    LinkedList<Student> students = new LinkedList<>(); // list of all students participating (Student objects)
+    LinkedList<Question> questions = new LinkedList<>(); // list of all questions (Question objects)
 
-    void addQuestions() {
+    /** Create questions and add them to questions linkedlist **/
+    public void addQuestions() {
         // initializing the questions separately so the code looks a bit cleaner
         String p1 = "In what year was Java invented?";
         String p2 = "Java supports the for-each loop feature.";
@@ -26,41 +26,49 @@ public class VotingService {
         questions.add(q3);
         questions.add(q4);
         questions.add(q5);
+
     }
 
-    void addStudents() {
+    public void addStudents() {
         //adding 30 students to each game
         for(int i = 0; i < 30; i++){
-            Student student = new Student(i);
+            Student student = new Student(i+1);
             students.add(student);
         }
     }
 
-    void answerQuestions() {
-        int r = (int)(Math.random() * 4); //generate an answer
+    public void answerQuestions() {
+        Random rd = new Random();
         for(Student st: students) {
             //set and check answers for each student
             for(Question qt: questions){
+                int r = rd.nextInt(4); // generates a number, 0 - 3
                 if(qt.getqType() == "TrueFalse"){
                     if(r == 0 || r == 1) {
                         st.setAnswer("a");
+                        qt.setA();
                     }
                     else {
                         st.setAnswer("b");
+                        qt.setB();
                     }
                 }
                 else{
-                    if(r == 0 || r == 1) {
+                    if(r == 0) {
                         st.setAnswer("a");
+                        qt.setA();
+                    }
+                    else if(r == 1) {
+                        st.setAnswer("b");
+                        qt.setB();
                     }
                     else if(r == 2) {
-                        st.setAnswer("b");
-                    }
-                    else if(r == 3) {
                         st.setAnswer("c");
+                        qt.setC();
                     }
                     else {
                         st.setAnswer("d");
+                        qt.setD();
                     }
                 }
 
@@ -71,14 +79,40 @@ public class VotingService {
                     st.setIncorrectNum();
                 }
                 st.setTotalNum();
+                //ended here Sunday Night
             }
 
         }
     }
 
-    void printStatistics(){
+    public void printStatistics(){
+        for(Question qt: questions) {
+            System.out.println("~Question " + qt.getQuestionNum() + "~");
+            System.out.println(qt.getQuestion());
 
+            if (qt.getqType() == "TrueFalse") {
+                System.out.println(qt.getOp1() + " | " + qt.getOp2());
+                System.out.println("Number of A's: " + qt.getA());
+                System.out.println("Number of B's: " + qt.getB());
+                System.out.println("Answer: " + qt.getAnswer());
+            }
+            else {
+                System.out.println(qt.getOp1() + " | " + qt.getOp2() + " | " + qt.getOp3() + " | " + qt.getOp4());
+                System.out.println("Number of A's: " + qt.getA());
+                System.out.println("Number of B's: " + qt.getB());
+                System.out.println("Number of C's: " + qt.getC());
+                System.out.println("Number of D's: " + qt.getD());
+                System.out.println("Answer: " + qt.getAnswer());
+            }
+        }
+        System.out.println();
     }
 
+    public void printScores() {
+        System.out.println("~Student Scores~");
+        for(Student st: students) {
+            System.out.println("Student " + st.getId() + ": " + st.getCorrectNum() + "/5");
+        }
+    }
 
 }
