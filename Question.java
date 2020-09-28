@@ -93,4 +93,20 @@ class Question {
         return d;
     }
 
+    public String getOp1() {
+        return op1;
+    }
+
+    public String getOp2() {
+        return op2;
+    }
+
+    public String getOp3() {
+        return op3;
+    }
+
+    public String getOp4() {
+        return op4;
+    }
+
 }
