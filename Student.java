@@ -4,12 +4,8 @@ public class Student {
     private String ans; // student's answer
     private int correctNum = 0; // number of correct answers
     private int incorrectNum = 0; // number of incorrect answers
-    private int totalNum = 0; //
+    private int totalNum = 0; // number of questions answered
     private double score;
-
-    Student(){
-
-    }
 
     Student(int id) {
         this.id = id;
@@ -25,15 +21,15 @@ public class Student {
     }
 
     public void setCorrectNum() {
-        correctNum++;
+        correctNum += 1;
     }
 
     public void setIncorrectNum() {
-        incorrectNum++;
+        incorrectNum += 1;
     }
 
     public void setTotalNum() {
-        totalNum++;
+        totalNum += 1;
     }
 
     public String getAnswer() {
@@ -48,9 +44,16 @@ public class Student {
         return incorrectNum;
     }
 
+    public int getTotalNum() {
+        return totalNum;
+    }
+
     public double getScore() {
         score = correctNum / totalNum;
         return score;
     }
 
+    public int getId() {
+        return id;
+    }
 }
