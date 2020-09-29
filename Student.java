@@ -1,13 +1,13 @@
 public class Student {
 
-    private int id; // student ID
+    private String id; // student ID
     private String ans; // student's answer
     private int correctNum = 0; // number of correct answers
     private int incorrectNum = 0; // number of incorrect answers
     private int totalNum = 0; // number of questions answered
     private double score;
 
-    Student(int id) {
+    Student(String id) {
         this.id = id;
         this.ans = ans;
         this.correctNum = correctNum;
@@ -53,7 +53,7 @@ public class Student {
         return score;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 }
