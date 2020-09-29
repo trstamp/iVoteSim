@@ -31,8 +31,16 @@ public class VotingService {
 
     public void addStudents() {
         //adding 30 students to each game
+        String idString = "0123456789";
+        int n = 5; // length of ID
+
         for(int i = 0; i < 30; i++){
-            Student student = new Student(i+1);
+            StringBuilder sb = new StringBuilder(n); // put StringBuilder object in here so it makes a new string for every student
+            for(int j = 0; j < n; j++){
+                int num = (int)(idString.length() * Math.random());
+                sb.append(idString.charAt(num));
+            }
+            Student student = new Student(sb.toString());
             students.add(student);
         }
     }
